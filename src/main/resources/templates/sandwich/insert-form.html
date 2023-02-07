@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<h1>Sandwich insert form</h1>
+
+<form action="/sandwich/add" method="post" th:object="${form}">
+
+  <div>
+    <label for="in-name">name:</label><br/>
+    <input type="text" id="in-name" th:field="*{name}">
+  </div>
+
+  <div>
+    <label for="in-price">price:</label><br/>
+    <input type="number" id="in-price" th:field="*{price}">
+  </div>
+
+  <div>
+    <label for="in-desc">description:</label><br/>
+    <textarea id="in-desc" cols="30" rows="10" th:field="*{desc}"></textarea>
+  </div>
+
+  <button type="submit">envoyer</button>
+
+</form>
+
+</body>
+</html>

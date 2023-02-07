@@ -9,18 +9,22 @@
 
     <table>
         <thead>
-            <tr>
-                <td>id</td>
-                <td>name</td>
-                <td>price</td>
-            </tr>
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>price</td>
+            <td>details</td>
+        </tr>
         </thead>
         <tbody>
-            <tr th:each="item: ${list}" th:object="${item}">
+        <tr th:each="item : ${list}" th:object="${item}">
             <td th:text="*{id}">1</td>
-                <td th:text="*{name}">basique</td>
-                <td th:text="*{price}">00.00</td>
-            </tr>
+            <td th:text="*{name}">basique</td>
+            <td th:text="*{price}">5.50</td>
+            <td>
+                <a th:href="@{ /sandwich/{id} (id=*{id}) }">details</a>
+            </td>
+        </tr>
         </tbody>
     </table>
 </body>
