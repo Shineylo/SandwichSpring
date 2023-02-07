@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A la carte</title>
+</head>
+<body>
+    <h1>Sandwich a la carte</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>name</td>
+                <td>price</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item: ${list}" th:object="${item}">
+            <td th:text="*{id}">1</td>
+                <td th:text="*{name}">basique</td>
+                <td th:text="*{price}">00.00</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
