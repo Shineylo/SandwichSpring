@@ -3,7 +3,7 @@ package technobel.bart.sandwichspring.service.mapper;
 import org.springframework.stereotype.Service;
 import technobel.bart.sandwichspring.models.dto.SandwichDTO;
 import technobel.bart.sandwichspring.models.entity.Sandwich;
-import technobel.bart.sandwichspring.models.form.SandwichInsertForm;
+import technobel.bart.sandwichspring.models.form.sandwich.SandwichInsertForm;
 
 @Service
 public class SandwichMapper {
@@ -29,7 +29,7 @@ public class SandwichMapper {
 
         sandwich.setName(form.getName() );
         sandwich.setPrice(form.getPrice());
-        sandwich.setDescription(form.getDesc());
+        sandwich.setDescription(form.getDescription());
 
         return sandwich;
     }

@@ -3,7 +3,8 @@ package technobel.bart.sandwichspring.service.impl;
 import org.springframework.stereotype.Service;
 import technobel.bart.sandwichspring.models.dto.SandwichDTO;
 import technobel.bart.sandwichspring.models.entity.Sandwich;
-import technobel.bart.sandwichspring.models.form.SandwichInsertForm;
+import technobel.bart.sandwichspring.models.form.sandwich.SandwichInsertForm;
+import technobel.bart.sandwichspring.models.form.sandwich.SandwichUpdateForm;
 import technobel.bart.sandwichspring.repository.SandwichRepository;
 import technobel.bart.sandwichspring.service.SandwichService;
 import technobel.bart.sandwichspring.service.mapper.SandwichMapper;
@@ -43,6 +44,20 @@ public class SandwichServiceImpl implements SandwichService {
 
         Sandwich entity = mapper.toEntity(form);
         sandwichRepository.save( entity );
+    }
+
+    @Override
+    public void update(Long id, SandwichUpdateForm form) {
+        if( form == null )
+            throw new IllegalArgumentException("form should not be null");
+
+        Sandwich toUpdate = sandwichRepository.findById(id)
+                        .orElseThrow(() -> new RuntimeException("Sandwich not found"));
+        toUpdate.setName(form.getName());
+        toUpdate.setDescription(form.getDescription());
+        toUpdate.setPrice(form.getPrice());
+
+        sandwichRepository.save(toUpdate);
     }
 
 }

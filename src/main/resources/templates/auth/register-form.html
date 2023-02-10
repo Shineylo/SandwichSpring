@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+
+<h1>Registration form</h1>
+
+<form action="/auth/register" method="post" th:object="${form}">
+
+    <div>
+        <label for="in-email">email:</label><br/>
+        <input type="email" id="in-email" th:field="*{email}">
+    </div>
+
+    <div>
+        <label for="in-pswd">password:</label><br/>
+        <input type="password" id="in-pswd" th:field="*{password}">
+    </div>
+
+    <div>
+        <label for="in-firstname">firstname</label><br/>
+        <input type="text" id="in-firstname" th:field="*{firstName}">
+    </div>
+
+    <div>
+        <label for="in-lastname">lastname</label><br/>
+        <input type="text" id="in-lastname" th:field="*{lastName}">
+    </div>
+
+    <div>
+        <label for="in-bdate">birthdate</label><br/>
+        <input type="date" id="in-bdate" th:field="*{birthdate}">
+    </div>
+
+    <button type="submit">sign up</button>
+
+</form>
+
+</body>
+</html>

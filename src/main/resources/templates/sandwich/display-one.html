@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sandwich</title>
+    <th:block th:replace="~{ fragment/fragments :: base_css }"></th:block>
 </head>
   <body>
     <h1>Sandwich details:</h1>
@@ -19,7 +20,7 @@
       <dd th:text="*{price}"></dd>
 
       <dt>description</dt>
-      <dd th:text="*{desc}"></dd>
+      <dd th:text="*{description}"></dd>
 
     </dl>
 
