@@ -12,6 +12,10 @@
 
     <form action="/auth/register" method="post" th:object="${form}">
 
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
+        </div>
+
         <div class="mb-3">
             <label for="in-email" class="form-label">email:</label><br/>
             <input type="email" id="in-email" th:field="*{email}" class="form-control">
@@ -20,7 +24,13 @@
 
         <div class="mb-3">
             <label for="in-pswd" class="form-label">password:</label><br/>
-            <input type="password" id="in-pswd" th:field="*{password}" class="form-control">
+            <input type="password" id="in-pswd" th:field="*{confirm}" class="form-control">
+            <p th:if="${#fields.errors('confirm')}" th:errors="*{confirm}" class="form-text form-error"></p>
+        </div>
+
+        <div class="mb-3">
+            <label for="in-pswd-confirm" class="form-label">confirm password:</label><br/>
+            <input type="password" id="in-pswd-confirm" th:field="*{password}" class="form-control">
             <p th:if="${#fields.errors('password')}" th:errors="*{password}" class="form-text form-error"></p>
         </div>
 
@@ -38,8 +48,8 @@
 
         <div>
             <label for="in-bdate" class="form-label">birthdate</label><br/>
-            <input type="date" id="in-bdate" th:field="*{birthdate}" class="form-control">
-            <p th:if="${#fields.errors('birthdate')}" th:errors="*{birthdate}" class="form-text form-error"></p>
+            <input type="date" id="in-bdate" th:field="*{birthDate}" class="form-control">
+            <p th:if="${#fields.errors('birthDate')}" th:errors="*{birthDate}" class="form-text form-error"></p>
         </div>
 
         <button type="submit" class="btn btn-success">sign up</button>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{ fragment/layout :: layout( ~{ :: content }) }">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<th:block th:fragment="content">
+  <h1>An error has occured</h1>
+
+  <div>
+    <p>error message: <span th:text="${ ex.message }"></span></p>
+    <p>error data: <span th:text="${ ex.innerData }"></span></p>
+  </div>
+</th:block>
+
+</body>
+</html>

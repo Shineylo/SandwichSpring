@@ -29,5 +29,5 @@ public class User {
     @Column(nullable = false)
     private boolean enable;
     @Column(name = "black_listed",nullable = false)
-    private String blackListed;
+    private boolean blackListed;
 }

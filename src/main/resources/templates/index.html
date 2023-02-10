@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" th:replace="~{fragment/layout :: layout(~{ :: content })}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
+<th:block th:fragment="content">
+    <h1>Homepage</h1>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam hic ipsa iste praesentium tenetur? Accusantium aperiam aut beatae commodi, dolore dolorem dolores eaque eos, incidunt ipsam itaque, molestias neque omnis repudiandae rerum saepe sunt vel velit veniam voluptate! Blanditiis, maiores.</p>
+</th:block>
 
 </body>
 </html>

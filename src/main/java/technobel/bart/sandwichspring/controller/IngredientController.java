@@ -1,3 +1,10 @@
+package technobel.bart.sandwichspring.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import technobel.bart.sandwichspring.service.IngredientService;
+
 @Controller
 @RequestMapping("/ingredient")
 public class IngredientController {

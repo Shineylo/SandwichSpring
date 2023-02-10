@@ -5,8 +5,16 @@ import technobel.bart.sandwichspring.models.dto.SandwichDTO;
 import technobel.bart.sandwichspring.models.entity.Sandwich;
 import technobel.bart.sandwichspring.models.form.sandwich.SandwichInsertForm;
 
+import java.util.stream.Collectors;
+
 @Service
 public class SandwichMapper {
+
+    private final IngredientMapper ingredientMapper;
+
+    public SandwichMapper(IngredientMapper ingredientMapper) {
+        this.ingredientMapper = ingredientMapper;
+    }
     public SandwichDTO toDto(Sandwich entity){
 
         if( entity == null )
@@ -17,6 +25,11 @@ public class SandwichMapper {
                 .name( entity.getName() )
                 .description( entity.getDescription() )
                 .price( entity.getPrice() )
+                .ingredients(
+                        entity.getIngredients().stream()
+                                .map(ingredientMapper::toDto)
+                                .collect(Collectors.toSet())
+                )
                 .build();
 
     }

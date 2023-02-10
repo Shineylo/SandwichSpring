@@ -1,8 +1,6 @@
 package technobel.bart.sandwichspring.service.mapper;
 
 import org.springframework.stereotype.Service;
-import technobel.bart.sandwichspring.models.dto.SandwichDTO;
-import technobel.bart.sandwichspring.models.dto.UserDTO;
 import technobel.bart.sandwichspring.models.entity.User;
 import technobel.bart.sandwichspring.models.form.user.RegisterForm;
 

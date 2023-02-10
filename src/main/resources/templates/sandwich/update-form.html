@@ -26,8 +26,8 @@
 
         <div class="mb-3">
             <label for="in-desc" class="form-label">description:</label><br/>
-            <p th:if="${ #fields.hasErrors('desc') }" th:errors="*{desc}" style="color: red">attention erreur</p>
-            <textarea id="in-desc" class="form-control" cols="30" rows="10" th:field="*{desc}"></textarea>
+            <p th:if="${ #fields.hasErrors('description') }" th:errors="*{description}" style="color: red">attention erreur</p>
+            <textarea id="in-desc" class="form-control" cols="30" rows="10" th:field="*{description}"></textarea>
         </div>
 
         <div class="mb-3">

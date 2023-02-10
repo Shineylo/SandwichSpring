@@ -5,9 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import technobel.bart.sandwichspring.models.dto.IngredientDTO;
 import technobel.bart.sandwichspring.models.dto.SandwichDTO;
+import technobel.bart.sandwichspring.models.entity.Ingredient;
 import technobel.bart.sandwichspring.models.form.sandwich.SandwichInsertForm;
 import technobel.bart.sandwichspring.models.form.sandwich.SandwichUpdateForm;
+import technobel.bart.sandwichspring.service.IngredientService;
 import technobel.bart.sandwichspring.service.SandwichService;
 
 @Controller
@@ -58,7 +61,7 @@ public class SandwichController {
 
         SandwichDTO sandwich = sandwichService.getOne(id);
         form.setName( sandwich.getName() );
-        form.setDesc( sandwich.getDesc() );
+        form.setDescription( sandwich.getDescription() );
         form.setPrice( sandwich.getPrice() );
         form.setIngredientsId(
                 sandwich.getIngredients().stream()
@@ -86,5 +89,6 @@ public class SandwichController {
         sandwichService.update(id, form);
         return "redirect:/sandwich/"+id;
     }
+
 
 }
