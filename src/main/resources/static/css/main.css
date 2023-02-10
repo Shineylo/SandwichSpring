@@ -1,3 +1,16 @@
 h1 {
     color: red;
 }
+
+.form-error {
+    color: red;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.inline-form{
+    display: inline;
+}

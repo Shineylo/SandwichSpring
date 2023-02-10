@@ -1,32 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" th:replace="~{ fragment/layout :: layout(~{ :: content }) }">
 <head>
-    <meta charset="UTF-8">
-    <title>Sandwich</title>
-    <th:block th:replace="~{ fragment/fragments :: base_css }"></th:block>
+  <meta charset="UTF-8">
+  <title>Title</title>
 </head>
-  <body>
-    <h1>Sandwich details:</h1>
+<body>
 
-    <dl th:object="${sandwich}">
+<th:block th:fragment="content" th:object="${sandwich}">
 
-      <dt>id</dt>
-      <dd th:text="*{id}"></dd>
 
-      <dt>name</dt>
-      <dd th:text="*{name}"></dd>
 
-      <dt>price</dt>
-      <dd th:text="*{price}"></dd>
+  <div class="card mt-2">
+    <div class="card-header">
+      <h1>Ingredient details</h1>
+    </div>
+    <div class="card-body">
+      <p>
+        <span class="field-title">id: </span>
+        <span class="field-value" th:text="*{id}"></span>
+      </p>
+      <p>
+        <span class="field-title">name: </span>
+        <span class="field-value" th:text="*{name}"></span>
+      </p>
+      <p>
+        <span class="field-title">id: </span>
+        <span class="field-value" th:text="*{price}"></span>
+      </p>
+      <p>
+        <span class="field-title">name: </span>
+        <span class="field-value" th:text="*{desc}"></span>
+      </p>
+      <p>
+      <p>ingrédients:</p>
+      <ul>
+        <li th:each="ing : *{ingredients}" th:text="${ing.name}"></li>
+      </ul>
+      </p>
+    </div>
+  </div>
 
-      <dt>description</dt>
-      <dd th:text="*{description}"></dd>
+  <a href="/sandwich/all">
+    <button class="btn btn-primary">back to menu</button>
+  </a>
+  <a th:href="@{ /sandwich/{id}/update (id=${sandwich.id}) }">
+    <button class="btn btn-primary">
+      update
+    </button>
+  </a>
+</th:block>
 
-    </dl>
 
-    <a href="/sandwich/all">
-      <button>back to menu</button>
-    </a>
-
-  </body>
+</body>
 </html>

@@ -2,13 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>A la carte</title>
+    <title>Title</title>
     <th:block th:replace="~{ fragment/fragments :: base_css }"></th:block>
 </head>
 <body>
-    <h1>Sandwich a la carte</h1>
 
-    <table>
+<div th:replace="~{ fragment/fragments :: header }"></div>
+
+<main class="container">
+    <h1>Sandwich menu</h1>
+
+    <div>
+        <a href="/sandwich/add">
+            <button class="btn btn-success">add sandwich</button>
+        </a>
+    </div>
+
+
+    <table class="table">
         <thead>
         <tr>
             <td>id</td>
@@ -28,6 +39,13 @@
         </tr>
         </tbody>
     </table>
+</main>
+
+
+<div th:replace="~{ fragment/fragments :: footer }"></div>
+
+<div th:replace="~{ fragment/fragments :: base_js }">
+</div>
 
 </body>
 </html>

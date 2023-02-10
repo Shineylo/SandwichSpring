@@ -15,9 +15,11 @@ import technobel.bart.sandwichspring.service.SandwichService;
 public class SandwichController {
 
     private final SandwichService sandwichService;
+    private final IngredientService ingredientService;
 
-    public SandwichController(SandwichService sandwichService) {
+    public SandwichController(SandwichService sandwichService, IngredientService ingredientService) {
         this.sandwichService = sandwichService;
+        this.ingredientService = ingredientService;
     }
 
     // GET - /sandwich/all
@@ -36,6 +38,7 @@ public class SandwichController {
     @GetMapping("/add")
     public String insertForm(Model model){
         model.addAttribute("form", new SandwichInsertForm());
+        model.addAttribute("ingredients", ingredientService.getAll());
         return "sandwich/insert-form";
     }
 
@@ -44,21 +47,28 @@ public class SandwichController {
         if(bindingResult.hasErrors() ) {
             return "sandwich/insert-form";
         }
+
         sandwichService.insert(form);
         return "redirect:/sandwich/all";
     }
 
     @GetMapping("/{id:[0-9]+}/update")
-    public String updateForm(Model model,@PathVariable long id){
+    public String updateForm(Model model, @PathVariable long id){
         SandwichUpdateForm form = new SandwichUpdateForm();
 
         SandwichDTO sandwich = sandwichService.getOne(id);
-        form.setName(sandwich.getName());
-        form.setDescription(sandwich.getDescription());
-        form.setPrice(sandwich.getPrice());
+        form.setName( sandwich.getName() );
+        form.setDesc( sandwich.getDesc() );
+        form.setPrice( sandwich.getPrice() );
+        form.setIngredientsId(
+                sandwich.getIngredients().stream()
+                        .map(IngredientDTO::getId)
+                        .toList()
+        );
 
-        model.addAttribute("form",form);
-        model.addAttribute("id",id);
+        model.addAttribute("form", form);
+        model.addAttribute("id", id);
+        model.addAttribute("ingredients",ingredientService.getAll());
 
         return "sandwich/update-form";
     }

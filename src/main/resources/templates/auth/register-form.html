@@ -1,43 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" th:replace="~{ fragment/layout :: layout(~{ :: content}) }">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Title</title>
 </head>
 <body>
 
-<h1>Registration form</h1>
+<th:block th:fragment="content">
 
-<form action="/auth/register" method="post" th:object="${form}">
+    <h1>Registration form</h1>
 
-    <div>
-        <label for="in-email">email:</label><br/>
-        <input type="email" id="in-email" th:field="*{email}">
-    </div>
+    <form action="/auth/register" method="post" th:object="${form}">
 
-    <div>
-        <label for="in-pswd">password:</label><br/>
-        <input type="password" id="in-pswd" th:field="*{password}">
-    </div>
+        <div class="mb-3">
+            <label for="in-email" class="form-label">email:</label><br/>
+            <input type="email" id="in-email" th:field="*{email}" class="form-control">
+            <p th:if="${#fields.errors('email')}" th:errors="*{email}" class="form-text form-error"></p>
+        </div>
 
-    <div>
-        <label for="in-firstname">firstname</label><br/>
-        <input type="text" id="in-firstname" th:field="*{firstName}">
-    </div>
+        <div class="mb-3">
+            <label for="in-pswd" class="form-label">password:</label><br/>
+            <input type="password" id="in-pswd" th:field="*{password}" class="form-control">
+            <p th:if="${#fields.errors('password')}" th:errors="*{password}" class="form-text form-error"></p>
+        </div>
 
-    <div>
-        <label for="in-lastname">lastname</label><br/>
-        <input type="text" id="in-lastname" th:field="*{lastName}">
-    </div>
+        <div>
+            <label for="in-firstname" class="form-label">firstname</label><br/>
+            <input type="text" id="in-firstname" th:field="*{firstName}" class="form-control">
+            <p th:if="${#fields.errors('firstName')}" th:errors="*{firstName}" class="form-text form-error"></p>
+        </div>
 
-    <div>
-        <label for="in-bdate">birthdate</label><br/>
-        <input type="date" id="in-bdate" th:field="*{birthdate}">
-    </div>
+        <div>
+            <label for="in-lastname" class="form-label">lastname</label><br/>
+            <input type="text" id="in-lastname" th:field="*{lastName}" class="form-control">
+            <p th:if="${#fields.errors('lastName')}" th:errors="*{lastName}" class="form-text form-error"></p>
+        </div>
 
-    <button type="submit">sign up</button>
+        <div>
+            <label for="in-bdate" class="form-label">birthdate</label><br/>
+            <input type="date" id="in-bdate" th:field="*{birthdate}" class="form-control">
+            <p th:if="${#fields.errors('birthdate')}" th:errors="*{birthdate}" class="form-text form-error"></p>
+        </div>
 
-</form>
+        <button type="submit" class="btn btn-success">sign up</button>
+
+    </form>
+</th:block>
 
 </body>
 </html>

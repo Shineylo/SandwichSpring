@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr" th:fragment="layout(content)">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <th:block th:replace="~{ /fragment/fragments :: base_css }"></th:block>
+</head>
+<body>
+
+
+<th:block th:replace="~{ /fragment/fragments :: header }"></th:block>
+
+<main class="container" th:insert="${content}">
+</main>
+
+<th:block th:replace="~{ /fragment/fragments :: footer }"></th:block>
+<th:block th:replace="~{ /fragment/fragments :: base_js }"></th:block>
+
+</body>
+</html>
